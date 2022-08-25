@@ -11,7 +11,7 @@ class RoupaController {
     }
 
     static listarPorID = (req, res) => {
-        const id = req.params.id
+        const id = Number(req.params.id)
 
         const produto = Roupa.findById(id)
 
@@ -54,7 +54,7 @@ class RoupaController {
     }
 
     static atualizar = (req, res) => {
-        const id = req.params.id
+        const id = Number(req.params.id)
 
         const item = Roupa.findById(id)
         if (item == null) {
@@ -84,7 +84,7 @@ class RoupaController {
     }
 
     static deletar = (req, res) => {
-        const id = req.params.id
+        const id = Number(req.params.id)
         // devo colocar toda essa lógica dentro de um método deletar dentro de "Roupa.js"?
         const posItem = Roupa.findIndexById(id)
 
@@ -95,7 +95,7 @@ class RoupaController {
         } else {
             const itemDeletado = tabelaRoupa[posItem]
             tabelaRoupa.splice(posItem,1)
-            
+
             res.status(200).json({
                 message: "Item deletado com sucesso!",
                 item: itemDeletado,
