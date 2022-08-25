@@ -56,15 +56,6 @@ class Roupa {
     static delete() {
         return "teste"
     }
-
-    // getTipo() {
-    //     return this._tipo
-    // }
-
-    // setTipo(novoTipo) {
-    //     this._tipo = novoTipo
-    // }
-
 }
 
 export default Roupa
