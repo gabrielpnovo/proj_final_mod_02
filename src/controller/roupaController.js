@@ -12,20 +12,52 @@ class RoupaController {
 
     static listarPorID = (req, res) => {
         const id = req.params.id
-        const posItem = tabelaRoupa.findIndex(e => e.id == id)
-        res.status(200).json(tabelaRoupa[posItem])
 
-        // const id = req.params.id
-        // const posItem = Object.keys(tabelaRoupa).find(e => e==id)
-        // res.status(200).json(tabelaRoupa[posItem-1])
+        const produto = tabelaRoupa.find(e => e.id == id)
+
+        if (produto == null) {
+            res.status(200).json({
+                message: "Não foi encontrado nenhum item"
+            })
+        } else {
+            res.status(200).json({
+                produto
+            })
+        }
     }
 
     static criar = (req, res) => {
-        console.log(Object.keys(tabelaRoupa))
-        // const posMaiorId = Math.max(Object.keys(tabelaRoupa))
-        // res.status(200).send(posMaiorId)
-        // const maiorId = tabelaRoupa[posMaiorId].id
-        // res.status(200).send(maiorId)
+        const listaPropriedades = Object.keys(req.body)
+
+        if (
+            listaPropriedades.includes('nome') &&
+            listaPropriedades.includes('tipo') &&
+            listaPropriedades.includes('valor')
+        ) {
+            const nome = req.body.nome
+            const tipo = req.body.tipo
+            const valor = req.body.valor
+
+            const produto = new Roupa( nome, tipo, valor)
+            produto.save()
+            const arrayIds = tabelaRoupa.map(e => e.id)
+            console.log(arrayIds)
+            // produto.findById()
+            // usuario.save()
+            // usuario.save() // A segunda chamada para .save()
+                           // não deveria salvar o elemento
+                           // duas vezes
+    
+            res.status(200).json({
+                mensagem: 'Criamos o usuário com sucesso!',
+                dados: tabelaRoupa
+            })
+        } else {
+            resposta.status(400).json({
+                erro: 'Os campos de email, senha, confirmacao e username são obrigatórios!',
+                informados: listaPropriedades
+            })
+        }
 
         // const objeto = req.body
         // let camposInformados = true
@@ -57,8 +89,18 @@ class RoupaController {
     static deletar = (req, res) => {
         const id = req.params.id
         const posItem = tabelaRoupa.findIndex(e => e.id == id)
-        tabelaRoupa.splice(posItem,1)
-        res.status(200).json(tabelaRoupa)
+        const itemDeletado = tabelaRoupa[posItem]
+
+        if (posItem == -1) {
+            res.status(404).send({
+                message: "Item não existe!"
+            })
+        } else {
+            res.status(200).json({
+                message: "Item deletado com sucesso!",
+                item: itemDeletado
+            })
+        }
     }
 }
 

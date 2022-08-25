@@ -1,10 +1,22 @@
-class Roupa {
+import { tabelaRoupa } from "../database.js"
 
-    constructor(id, nome, tipo, valor) {
-        this.id = id,
+class Roupa {
+    static proximoId = 1
+
+    constructor(nome, tipo, valor) {
+        this.id = Roupa.proximoId++,
         this.nome = nome,
         this.tipo = tipo,
         this.valor = valor
+    }
+
+    save() {
+        tabelaRoupa.push(this)
+    }
+
+    findById() {
+        console.log(this.id)
+        console.log(tabelaRoupa.find(id => id == this.id))
     }
 
     // getTipo() {
@@ -18,10 +30,3 @@ class Roupa {
 }
 
 export default Roupa
-
-// function criaTipoBola (tipo) {
-
-// }
-
-// // Cria 3 instâncias
-// const bola1 = new Bola('tipo de bola boa')
