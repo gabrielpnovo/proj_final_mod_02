@@ -7,6 +7,10 @@ class Roupa {
         return (tabelaRoupa.find(e => e.id == id))
     }
 
+    static findIndexById(id) {
+        return tabelaRoupa.findIndex(e => e.id == id)
+    }
+
     static verificaBody(reqBody) {
         for (let i =0;i<reqBody.length;i++) {
             if

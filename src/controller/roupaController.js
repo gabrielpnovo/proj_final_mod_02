@@ -40,7 +40,6 @@ class RoupaController {
 
             const produto = new Roupa( nome, tipo, valor)
             produto.save()
-            // produto.save()
     
             res.status(200).json({
                 mensagem: 'Criamos o usuário com sucesso!',
@@ -66,14 +65,11 @@ class RoupaController {
             const listaPropriedades = Object.keys(req.body)
 
             let campos = Roupa.verificaBody(listaPropriedades)
-            console.log(campos)
             
             if (campos) {
                 listaPropriedades.forEach(e => {
-                    if (listaPropriedades.includes(e)) {
-                        const posItem = tabelaRoupa.findIndex(e => e.id == id)
-                        tabelaRoupa[posItem][e] = req.body[e]
-                    }
+                    const posItem = tabelaRoupa.findIndex(e => e.id == id)
+                    tabelaRoupa[posItem][e] = req.body[e]
                 })
                 res.status(200).json({
                     message: 'Campos atualizados com sucesso!',
@@ -85,25 +81,21 @@ class RoupaController {
                 })
             }
         }
-
-
-        
-
     }
 
     static deletar = (req, res) => {
         const id = req.params.id
         // devo colocar toda essa lógica dentro de um método deletar dentro de "Roupa.js"?
-        const posItem = tabelaRoupa.findIndex(e => e.id == id)
-        console.log(posItem)
-        const itemDeletado = tabelaRoupa[posItem]
-        tabelaRoupa.splice(posItem,1)
+        const posItem = Roupa.findIndexById(id)
 
         if (posItem == -1) {
             res.status(404).send({
                 message: "Item não existe!"
             })
         } else {
+            const itemDeletado = tabelaRoupa[posItem]
+            tabelaRoupa.splice(posItem,1)
+            
             res.status(200).json({
                 message: "Item deletado com sucesso!",
                 item: itemDeletado,
