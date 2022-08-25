@@ -1,5 +1,5 @@
 import Roupa from "../models/Roupa.js"
-import {tabelaRoupa, parametrosTabela} from "../database.js"
+import {tabelaRoupa} from "../database.js"
 
 
 class RoupaController {
@@ -13,7 +13,7 @@ class RoupaController {
     static listarPorID = (req, res) => {
         const id = req.params.id
 
-        const produto = tabelaRoupa.find(e => e.id == id)
+        const produto = Roupa.findById(id)
 
         if (produto == null) {
             res.status(200).json({
@@ -40,13 +40,7 @@ class RoupaController {
 
             const produto = new Roupa( nome, tipo, valor)
             produto.save()
-            const arrayIds = tabelaRoupa.map(e => e.id)
-            console.log(arrayIds)
-            // produto.findById()
-            // usuario.save()
-            // usuario.save() // A segunda chamada para .save()
-                           // não deveria salvar o elemento
-                           // duas vezes
+            // produto.save()
     
             res.status(200).json({
                 mensagem: 'Criamos o usuário com sucesso!',
@@ -58,38 +52,52 @@ class RoupaController {
                 informados: listaPropriedades
             })
         }
-
-        // const objeto = req.body
-        // let camposInformados = true
-        // Object.keys(req.body).forEach( e => {
-        //     if (e in parametrosTabela) {
-
-        //     } else {
-        //         camposInformados = false
-        //     }
-        // })
-
-        // if (camposInformados = true) {
-
-        // }
-        // let roupa = new Roupa(req.body.id, req.body.nome, req.body.tipo, req.body.valor)
-        // res.status(200).send('ok')
-
-        // tabelaRoupa.push(roupa)
-        // res.status(200).json({
-        //     message: 'Novo produto criado com sucesso!',
-        //     roupa
-        // })
     }
 
     static atualizar = (req, res) => {
+        const id = req.params.id
+
+        const item = Roupa.findById(id)
+        if (item == null) {
+            res.status(400).json({
+                message: `Item de id ${id} não existe!`
+            })
+        } else {
+            const listaPropriedades = Object.keys(req.body)
+
+            let campos = Roupa.verificaBody(listaPropriedades)
+            console.log(campos)
+            
+            if (campos) {
+                listaPropriedades.forEach(e => {
+                    if (listaPropriedades.includes(e)) {
+                        const posItem = tabelaRoupa.findIndex(e => e.id == id)
+                        tabelaRoupa[posItem][e] = req.body[e]
+                    }
+                })
+                res.status(200).json({
+                    message: 'Campos atualizados com sucesso!',
+                    produto: Roupa.findById(id)
+                })
+            } else {
+                res.status(400).json({
+                    message: 'Vc forneceu campos inválidos. Verifique a documentação!'
+                })
+            }
+        }
+
+
+        
 
     }
 
     static deletar = (req, res) => {
         const id = req.params.id
+        // devo colocar toda essa lógica dentro de um método deletar dentro de "Roupa.js"?
         const posItem = tabelaRoupa.findIndex(e => e.id == id)
+        console.log(posItem)
         const itemDeletado = tabelaRoupa[posItem]
+        tabelaRoupa.splice(posItem,1)
 
         if (posItem == -1) {
             res.status(404).send({
@@ -98,7 +106,8 @@ class RoupaController {
         } else {
             res.status(200).json({
                 message: "Item deletado com sucesso!",
-                item: itemDeletado
+                item: itemDeletado,
+                itens: tabelaRoupa
             })
         }
     }

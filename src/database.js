@@ -7,8 +7,6 @@ const tabelaRoupa = [
     { id: 8, nome: 'Camiseta3', tipo: 'inverno', valor: 675 }
 ]
 
-const parametrosTabela = ['nome', 'tipo', 'valor']
-
 /**
  * Busca o array de produtos de uma determinada tabela
  * @param {string} tabela 
@@ -49,4 +47,4 @@ export function insere( tabela, item ) {
     return produto
 }
 
-export {tabelaRoupa, parametrosTabela}
+export {tabelaRoupa}
