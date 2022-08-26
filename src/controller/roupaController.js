@@ -54,7 +54,7 @@ class RoupaController {
             })
         } else {
             resposta.status(400).json({
-                erro: 'Os campos de email, senha, confirmacao e username são obrigatórios!',
+                erro: 'Os campos "nome", "tipo" e "valor" são obrigatórios"',
                 informados: listaPropriedades
             })
         }
@@ -78,7 +78,7 @@ class RoupaController {
                 message: 'Vc forneceu campos inválidos. Verifique a documentação!'
             })            
         }
-
+        
         Roupa.findAndUpdate(req.body, id)
         
         res.status(200).json({
