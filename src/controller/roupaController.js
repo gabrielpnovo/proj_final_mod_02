@@ -16,18 +16,25 @@ class RoupaController {
         const produto = Roupa.findById(id)
 
         if (produto == null) {
-            res.status(200).json({
+            return res.status(400).json({
                 message: "Não foi encontrado nenhum item"
             })
-        } else {
-            res.status(200).json({
-                produto
-            })
         }
+
+        res.status(200).json({
+            produto
+        })
     }
 
     static criar = (req, res) => {
+
         const listaPropriedades = Object.keys(req.body)
+
+        if (!Roupa.verificaBody(req.body)) {
+            return res.status(400).json({
+                erro: 'Campos incorretos! Verifique documentação!'
+            })
+        }
 
         if (
             listaPropriedades.includes('nome') &&
@@ -62,47 +69,37 @@ class RoupaController {
             return res.status(400).json({
                 message: `Item de id ${id} não existe!`
             })
-        } else {
-            const listaPropriedades = Object.keys(req.body)
-
-            let campos = Roupa.verificaBody(listaPropriedades)
-            
-            if (campos) {
-                listaPropriedades.forEach(e => {
-                    const posItem = tabelaRoupa.findIndex(e => e.id == id)
-                    tabelaRoupa[posItem][e] = req.body[e]
-                })
-                res.status(200).json({
-                    message: 'Campos atualizados com sucesso!',
-                    produto: Roupa.findById(id)
-                })
-            } else {
-                res.status(400).json({
-                    message: 'Vc forneceu campos inválidos. Verifique a documentação!'
-                })
-            }
         }
+
+        let campos = Roupa.verificaBody(req.body)
+        
+        if (!campos) {
+            return res.status(400).json({
+                message: 'Vc forneceu campos inválidos. Verifique a documentação!'
+            })            
+        }
+
+        Roupa.findAndUpdate(req.body, id)
+        
+        res.status(200).json({
+            message: 'Campos atualizados com sucesso!',
+        })
     }
 
     static deletar = (req, res) => {
         const id = Number(req.params.id)
-        // devo colocar toda essa lógica dentro de um método deletar dentro de "Roupa.js"?
-        const posItem = Roupa.findIndexById(id)
 
-        if (posItem == -1) {
-            res.status(404).send({
+        const itemDeletado = Roupa.findAndDelete(id)
+        
+        if (!itemDeletado) {
+            return res.status(404).send({
                 message: "Item não existe!"
             })
-        } else {
-            const itemDeletado = tabelaRoupa[posItem]
-            tabelaRoupa.splice(posItem,1)
-
-            res.status(200).json({
-                message: "Item deletado com sucesso!",
-                item: itemDeletado,
-                itens: tabelaRoupa
-            })
         }
+
+        res.status(200).send({
+            message: `Item ${id} deletado com sucesso!`
+        })
     }
 }
 

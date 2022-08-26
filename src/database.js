@@ -7,44 +7,9 @@ const tabelaRoupa = [
     { id: 8, nome: 'Camiseta3', tipo: 'inverno', valor: 675 }
 ]
 
-/**
- * Busca o array de produtos de uma determinada tabela
- * @param {string} tabela 
- * @returns {{ id: number; nome: string; valor: number }[]}
- */
-// export function busca( tabela ) {
-//     if ( tabela in tabelas ) {
-//         return tabelas[tabela]
-//     } else {
-//         throw new Error(`A tabela ${tabela} não existe! As tabelas existentes são: ${Object.keys(tabelas)}`)
-//     }
-// }
-
-function ultimoId( tabelaRoupa ) {
-    return tabelaRoupa[produtos.length - 1].id
+let id = 1
+if (tabelaRoupa.length != 0) {
+    id = Math.max.apply(null, tabelaRoupa.map(e => e.id)) + 1
 }
 
-/**
- * Insere um item em uma tabela especificada e devolve o novo elemento criado 
- * @param {string} tabela 
- * @param {any} item 
- * @returns {{ id: number; nome: string; valor: number }}
- */
-export function insere( tabela, item ) {
-    if ( !item['nome'] || !item['valor'] ) {
-        throw new Error(
-            'Você precisa informar os campos "nome" e "valor" e eles precisam ter dados! ' +
-            'Os valores informados foram: ' + Object.keys(item) +
-            ' e seus valores são: ' + Object.values(item)
-        )
-    }
-    const produto = {
-        id: ultimoId( tabela ) + 1,
-        nome: item.nome,
-        valor: item.valor
-    }    
-    busca( tabela ).push( produto )
-    return produto
-}
-
-export {tabelaRoupa}
+export {tabelaRoupa, id}

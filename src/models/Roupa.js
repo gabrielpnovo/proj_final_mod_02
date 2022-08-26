@@ -1,7 +1,7 @@
-import { tabelaRoupa } from "../database.js"
+import { tabelaRoupa, id } from "../database.js"
 
 class Roupa {
-    static proximoId = 1
+    static proximoId = id
 
     static findById(id) {
         return (tabelaRoupa.find(e => e.id == id))
@@ -11,29 +11,38 @@ class Roupa {
         return tabelaRoupa.findIndex(e => e.id == id)
     }
 
+    static findAndDelete(id) {
+        const posItem = Roupa.findIndexById(id)
+
+        if (posItem == -1) {
+            return false
+        }
+
+        tabelaRoupa.splice(posItem,1)
+        return true
+    }
+
+    static findAndUpdate(body, id) {
+        Object.keys(body).forEach(e => {
+            const posItem = tabelaRoupa.findIndex(e => e.id == id)
+            tabelaRoupa[posItem][e] = body[e]
+        })
+    }
+
     static verificaBody(reqBody) {
-        for (let i =0;i<reqBody.length;i++) {
+        const listaPropriedades = Object.keys(reqBody)
+
+        for (let i =0;i<listaPropriedades.length;i++) {
             if
-            (reqBody[i] == 'nome' || 
-            reqBody[i] == 'tipo' || 
-            reqBody[i] == 'valor') 
+            (listaPropriedades[i] == 'nome' || 
+            listaPropriedades[i] == 'tipo' || 
+            listaPropriedades[i] == 'valor') 
             {
                 
             } else {
                 return false
             }
         }
-        return true
-        reqBody.forEach(e => {
-            console.log(e)
-            if (e == 'nome' || e == 'tipo' || e == 'valor') {
-                return true
-            } else {
-                console.log('erro')
-                return false
-            }
-        })
-        console.log('depois for')
         return true
     }
 
@@ -48,13 +57,7 @@ class Roupa {
         const posItem = tabelaRoupa.findIndex(e => e.id == this.id)
         if (posItem == -1) {
             tabelaRoupa.push(this)
-        } else {
-            console.log("já existe")
         }
-    }
-
-    static delete() {
-        return "teste"
     }
 }
 
