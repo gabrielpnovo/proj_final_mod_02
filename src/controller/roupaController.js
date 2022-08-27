@@ -39,13 +39,15 @@ class RoupaController {
         if (
             listaPropriedades.includes('nome') &&
             listaPropriedades.includes('tipo') &&
-            listaPropriedades.includes('valor')
+            listaPropriedades.includes('valor') &&
+            listaPropriedades.includes('descricao')
         ) {
             const nome = req.body.nome
             const tipo = req.body.tipo
             const valor = req.body.valor
+            const descricao = req.body.descricao
 
-            const produto = new Roupa( nome, tipo, valor)
+            const produto = new Roupa( nome, tipo, valor, descricao)
             produto.save()
     
             res.status(200).json({
@@ -54,7 +56,7 @@ class RoupaController {
             })
         } else {
             resposta.status(400).json({
-                erro: 'Os campos "nome", "tipo" e "valor" são obrigatórios"',
+                erro: 'Os campos "nome", "tipo", "valor" e "descricao" são obrigatórios"',
                 informados: listaPropriedades
             })
         }
@@ -75,7 +77,7 @@ class RoupaController {
         
         if (!campos) {
             return res.status(400).json({
-                message: 'Vc forneceu campos inválidos. Verifique a documentação!'
+                message: 'Você forneceu campos inválidos. Verifique a documentação!'
             })            
         }
         

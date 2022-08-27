@@ -36,7 +36,9 @@ class Roupa {
             if
             (listaPropriedades[i] == 'nome' || 
             listaPropriedades[i] == 'tipo' || 
-            listaPropriedades[i] == 'valor') 
+            listaPropriedades[i] == 'valor' ||
+            listaPropriedades[i] == 'descricao' 
+            ) 
             {
                 
             } else {
@@ -46,11 +48,12 @@ class Roupa {
         return true
     }
 
-    constructor(nome, tipo, valor) {
+    constructor(nome, tipo, valor, descricao) {
         this.id = Roupa.proximoId++,
         this.nome = nome,
         this.tipo = tipo,
-        this.valor = valor
+        this.valor = valor,
+        this.descricao = descricao
     }
 
     save() {
