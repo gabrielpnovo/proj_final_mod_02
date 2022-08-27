@@ -8,7 +8,7 @@ class RoupaController {
         res.status(200).json({
             tabelaRoupa
         })
-    }
+    }   
 
     static listarPorID = (req, res) => {
         const id = Number(req.params.id)
