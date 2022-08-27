@@ -14,9 +14,9 @@ class RoupaController {
         const keys = Object.keys(req.query)
         let tabelaFiltrada = tabelaRoupa.concat()
 
-        for(let chave of keys){
+        for (let chave of keys) {
             tabelaFiltrada = tabelaFiltrada.filter(e => {
-                if(e[chave] == req.query[chave]){
+                if ( e[chave] == req.query[chave]) {
                     return e
                 }
             })
