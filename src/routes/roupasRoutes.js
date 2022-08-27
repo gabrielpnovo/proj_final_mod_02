@@ -3,6 +3,8 @@ import RoupaController from '../controller/roupaController.js'
 const routes = (app) => {
     app.get('/listar', RoupaController.listar)
 
+    app.get('/buscar', RoupaController.buscar)
+
     app.get('/listar/:id', RoupaController.listarPorID)
 
     app.post('/criar', RoupaController.criar)

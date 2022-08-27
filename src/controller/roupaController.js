@@ -10,6 +10,23 @@ class RoupaController {
         })
     }   
 
+    static buscar = (req, res) => {
+        const keys = Object.keys(req.query)
+        let tabelaFiltrada = tabelaRoupa.concat()
+
+        for(let chave of keys){
+            tabelaFiltrada = tabelaFiltrada.filter(e => {
+                if(e[chave] == req.query[chave]){
+                    return e
+                }
+            })
+        }
+
+        res.status(200).json({
+            tabelaFiltrada
+        })
+    }
+
     static listarPorID = (req, res) => {
         const id = Number(req.params.id)
 
