@@ -57,14 +57,16 @@ class RoupaController {
             listaPropriedades.includes('nome') &&
             listaPropriedades.includes('tipo') &&
             listaPropriedades.includes('valor') &&
-            listaPropriedades.includes('descricao')
+            listaPropriedades.includes('descricao') &&
+            listaPropriedades.includes('sustentavel')
         ) {
             const nome = req.body.nome
             const tipo = req.body.tipo
             const valor = req.body.valor
             const descricao = req.body.descricao
+            const sustentavel = req.body.sustentavel
 
-            const produto = new Roupa( nome, tipo, valor, descricao)
+            const produto = new Roupa( nome, tipo, valor, descricao, sustentavel)
             produto.save()
     
             res.status(200).json({
@@ -73,7 +75,7 @@ class RoupaController {
             })
         } else {
             resposta.status(400).json({
-                erro: 'Os campos "nome", "tipo", "valor" e "descricao" são obrigatórios"',
+                erro: 'Os campos "nome", "tipo", "valor" , "descricao" e "sustentavel" são obrigatórios"',
                 informados: listaPropriedades
             })
         }

@@ -37,7 +37,8 @@ class Roupa {
             (listaPropriedades[i] == 'nome' || 
             listaPropriedades[i] == 'tipo' || 
             listaPropriedades[i] == 'valor' ||
-            listaPropriedades[i] == 'descricao' 
+            listaPropriedades[i] == 'descricao'||
+            listaPropriedades[i] == 'sustentavel'
             ) 
             {
                 
@@ -53,7 +54,8 @@ class Roupa {
         this.nome = nome,
         this.tipo = tipo,
         this.valor = valor,
-        this.descricao = descricao
+        this.descricao = descricao,
+        this.sustentavel = sustentavel
     }
 
     save() {
