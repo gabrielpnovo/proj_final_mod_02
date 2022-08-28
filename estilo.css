@@ -1,0 +1,102 @@
+main {
+    position: relative;
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 5em;
+}
+
+body {
+    font-family: 'Oswald', sans-serif, 'icones';
+    background-color: white;
+    color: black;
+}
+
+.cabecalho {
+    height: 100px;
+    font-size: 2em;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    background-color: black;
+    margin-bottom: 16px;
+}
+
+.titulo-pagina {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0.8em 0;
+    clear: left;
+}
+
+.produtos {
+    display: flex;
+    justify-content: space-around;
+    vertical-align: top;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.produtos li {
+    width: 30%;
+    margin: 0 8px 1.5% 1.5%;
+    padding: 1em 0;
+	box-sizing: border-box;
+    border: 2px solid #000000;
+	border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.produto-nome {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.produto-descricao {
+    font-size: 1.2em;
+    padding: 0.5em;
+}
+
+.produto-preco {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.botao {
+    cursor: pointer;
+}
+
+.botao-produto {
+    background-color: #0070C0;
+    color: white;
+    /* font-weight: bold; */
+    border: 0px solid #000;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.botoes-filtro {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+}
+
+.botao-filtro:active {
+    color: white;
+    background-color: black;
+}
+
+.botao-filtro {
+    color: black;
+    /* font-weight: bold; */
+    border: 2.5px solid #000;
+    border-radius: 40px;
+    padding: 15px;
+    text-align: center;
+    margin-top: 15px;
+}

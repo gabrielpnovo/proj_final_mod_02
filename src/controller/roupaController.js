@@ -5,12 +5,14 @@ import {tabelaRoupa} from "../database.js"
 class RoupaController {
 
     static listar = (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*')
         res.status(200).json({
             tabelaRoupa
         })
     }   
 
     static buscar = (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', '*')
         const keys = Object.keys(req.query)
         let tabelaFiltrada = tabelaRoupa.concat()
 
