@@ -68,7 +68,7 @@ class RoupaController {
             produto.save()
     
             res.status(200).json({
-                mensagem: 'Criamos o usuário com sucesso!',
+                mensagem: 'Produto criado com sucesso!',
                 dados: tabelaRoupa
             })
         } else {
