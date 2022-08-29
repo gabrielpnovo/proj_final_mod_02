@@ -49,7 +49,7 @@ class Roupa {
         return true
     }
 
-    constructor(nome, tipo, valor, descricao) {
+    constructor(nome, tipo, valor, descricao, sustentavel) {
         this.id = Roupa.proximoId++,
         this.nome = nome,
         this.tipo = tipo,
