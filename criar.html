@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="reset.css">
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+        <title>Marketplace Virtual</title>
+
+    </head>
+    <body>
+        <header>
+            <div class="cabecalho">
+                <!-- <button class="cabecalho__menu" aria-label="Menu"><i></i></button> -->
+                <!-- <h1><img src="imagens/bike-logo.png" class="imagem-logo"></h1> -->
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Produtos</a></li>
+                        <li><a href="criar.html">Criar</a></li>
+                        <li><a href="atualizar.html">Atualizar</a></li>
+                        <li><a href="deletar.html">Deletar</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-produto">
+            <h2 class="titulo-pagina">Crie um Novo Produto</h2>
+            <hr>
+
+            <form class="formulario-contato">
+                <label for="nome">Nome do Produto:</label>
+                <input type="text" id="nome" class="input-padrao" required>
+
+                <label for="valor">Valor:</label>
+                <input type="text" id="valor" class="input-padrao" required>
+
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" class="input-padrao" required>
+                    
+                <fieldset class="formulario-radio tipo-produto">
+                    <p>Qual o tipo?</p> 
+
+                    <label for="radio-tipo-inverno"><input type="radio" name="tipo-produto" value="inverno" id="radio-tipo-inverno">Inverno</label>
+
+                    <label for="radio-tipo-verao"><input type="radio" name="tipo-produto" value="verao" id="radio-tipo-verao">Verão</label>
+                </fieldset>
+
+                <fieldset class="formulario-radio sustentavel-produto">
+                    <p>É Sustentável?</p> 
+
+                    <label for="radio-sustentavel-sim"><input type="radio" name="sustentavel-produto" value="sim" id="radio-sustentavel-sim">Sim</label>
+
+                    <label for="radio-sustentavel-nao"><input type="radio" name="sustentavel-produto" value="nao" id="radio-sustentavel-nao">Não</label>
+                </fieldset>
+                
+                <input class="botao-cria-produto" type="submit" value="Criar Produto">
+            </form>
+
+        </main>
+
+        <script src="./main.js"></script>
+    </body>
+</html>

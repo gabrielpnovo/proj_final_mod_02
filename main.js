@@ -4,6 +4,8 @@ const botaoMostraVerao = document.querySelector('.mostra-verao')
 const botaoMostraInverno = document.querySelector('.mostra-inverno')
 const botaoMostraSustentavel = document.querySelector('.mostra-sustentaveis')
 
+const botaoCriaProduto = document.querySelector('.botao-cria-produto')
+
 async function pegaTodos() {
     const url = 'http://localhost:3300';
 
@@ -39,7 +41,7 @@ async function pegaVerao() {
             <h3 class="produto-nome">${e.nome}</h3>
             <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
             <p class="produto-preco">R$${e.valor}</p>
-            <button class="botao" type="button">Adicionar ao Carrinho</button>
+            <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
         </li>
         `
     })
@@ -60,7 +62,7 @@ async function pegaInverno() {
             <h3 class="produto-nome">${e.nome}</h3>
             <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
             <p class="produto-preco">R$${e.valor}</p>
-            <button class="botao" type="button">Adicionar ao Carrinho</button>
+            <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
         </li>
         `
     })
@@ -81,7 +83,7 @@ async function pegaSustentavel() {
             <h3 class="produto-nome">${e.nome}</h3>
             <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
             <p class="produto-preco">R$${e.valor}</p>
-            <button class="botao" type="button">Adicionar ao Carrinho</button>
+            <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
         </li>
         `
     })
@@ -94,7 +96,6 @@ botaoMostraTodos.addEventListener('click', function () {
 
 botaoMostraVerao.addEventListener('click', function () {
     pegaVerao()
-
 });
 
 botaoMostraInverno.addEventListener('click', function () {
@@ -103,4 +104,8 @@ botaoMostraInverno.addEventListener('click', function () {
 
 botaoMostraSustentavel.addEventListener('click', function () {
     pegaSustentavel()
+});
+
+botaoCriaProduto.addEventListener('click', function () {
+    console.log('ok')
 });
