@@ -1,5 +1,6 @@
 const ul = document.querySelector('.produtos')
 const botaoMostraTodos = document.querySelector('.mostra-todos')
+const botaoMostraBasico = document.querySelector('.mostra-basico')
 const botaoMostraVerao = document.querySelector('.mostra-verao')
 const botaoMostraInverno = document.querySelector('.mostra-inverno')
 const botaoMostraSustentavel = document.querySelector('.mostra-sustentaveis')
@@ -27,10 +28,10 @@ async function pegaTodos() {
     // return itensConvertidos
 }
 
-async function pegaVerao() {
+async function pegaItens(tipoItem) {
     const url = 'http://localhost:3300';
 
-    const itens = await fetch(`${url}/buscar?tipo=verao`)
+    const itens = await fetch(`${url}/buscar?${tipoItem}`)
     const itensConvertidos = await itens.json()
 
     ul.innerHTML = ''
@@ -49,10 +50,10 @@ async function pegaVerao() {
     // return itensConvertidos
 }
 
-async function pegaInverno() {
+async function pegaInverno(valor) {
     const url = 'http://localhost:3300';
 
-    const itens = await fetch(`${url}/buscar?tipo=inverno`)
+    const itens = await fetch(`${url}/buscar?tipo=${valor}`)
     const itensConvertidos = await itens.json()
 
     ul.innerHTML = ''
@@ -97,14 +98,18 @@ botaoMostraTodos.addEventListener('click', function () {
     pegaTodos()
 });
 
+botaoMostraBasico.addEventListener('click', function () {
+    pegaItens(botaoMostraBasico.value)
+});
+
 botaoMostraVerao.addEventListener('click', function () {
-    pegaVerao()
+    pegaItens(botaoMostraVerao.value)
 });
 
 botaoMostraInverno.addEventListener('click', function () {
-    pegaInverno()
+    pegaItens(botaoMostraInverno.value)
 });
 
 botaoMostraSustentavel.addEventListener('click', function () {
-    pegaSustentavel()
+    pegaItens(botaoMostraSustentavel.value)
 });

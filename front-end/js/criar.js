@@ -11,7 +11,10 @@ const valorProduto = document.querySelector('#valor')
 const descricaoProduto = document.querySelector('#descricao')
 const imagemProduto = document.querySelector('#imagem')
 const radioInverno = document.querySelector('#radio-tipo-inverno')
-const radioVerao = document.querySelector('#radio-tipo-verao')
+// const radioVerao = document.querySelector('#radio-tipo-verao')
+// const radioBasico = document.querySelector('#radio-tipo-basico')
+const tiposArray = document.querySelectorAll('.radio-tipo')
+const sustentaveisArray = document.querySelectorAll('.radio-sustentavel')
 const radioSustentavelSim = document.querySelector('#radio-sustentavel-sim')
 const radioSustentavelNao = document.querySelector('#radio-sustentavel-nao')
 
@@ -62,13 +65,21 @@ function alertaPopup(msg) {
 };
 
 botaoCriaProduto.addEventListener('click', function () {
-    let tipo = 'verao'
-    let sustentavel = 'nao'
-    if (radioInverno.checked)
-        tipo = 'inverno'
-    
-    if (radioSustentavelSim.checked)
-        sustentavel = 'sim'
+    let tipo = ''
+    for (e of tiposArray) {
+        if (e.checked == true) {
+            tipo = e.value
+        }
+    }
+
+    let sustentavel = ''
+    for (e of sustentaveisArray) {
+        if (e.checked == true) {
+            sustentavel = e.value
+        }
+    }
+    console.log('tipo:' + tipo)
+    console.log('sustentavel:' + sustentavel)
     
     criaProduto(nomeProduto.value, tipo, valorProduto.value, descricaoProduto.value, sustentavel, imagemProduto.value)
     

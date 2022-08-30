@@ -30,8 +30,57 @@
             <h2 class="titulo-pagina">Atualize um Produto</h2>
             <hr>
 
+            <div class="popup hide-popup">
+                <p class="cabecalho-popup">Msg do Jogo</p>
+                <button class="fechar">x</button>
+                <div class="msg-popup">
+                    
+                </div>
+                <button class="ok-popup">Ok</button>
+            </div>
+    
+            <form class="formulario-contato">
+                <fieldset>
+                    <legend class="legenda-combobox">Qual item você deseja atualizar?</legend>
+                    <select class="combobox-selecao-id">
+
+                    </select>
+                </fieldset>
+
+                <label for="nome">Nome do Produto:</label>
+                <input type="text" id="nome" class="input-padrao" required>
+
+                <label for="valor">Valor:</label>
+                <input type="text" id="valor" class="input-padrao" required>
+
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" class="input-padrao" required>
+
+                <label for="imagem">Link da Imagem:</label>
+                <input type="text" id="imagem" class="input-padrao" >
+                    
+                <fieldset class="formulario-radio tipo-produto">
+                    <p>Qual o tipo?</p> 
+
+                    <label for="radio-tipo-inverno"><input type="radio" name="tipo-produto" value="inverno" id="radio-tipo-inverno" required>Inverno</label>
+
+                    <label for="radio-tipo-verao"><input type="radio" name="tipo-produto" value="verao" id="radio-tipo-verao">Verão</label>
+                </fieldset>
+
+                <fieldset class="formulario-radio sustentavel-produto">
+                    <p>É Sustentável?</p> 
+
+                    <label for="radio-sustentavel-sim"><input type="radio" name="sustentavel-produto" value="sim" id="radio-sustentavel-sim" required>Sim</label>
+
+                    <label for="radio-sustentavel-nao"><input type="radio" name="sustentavel-produto" value="nao" id="radio-sustentavel-nao">Não</label>
+                </fieldset>
+                
+                <!-- <input class="botao-cria-produto" type="submit" value="Criar Produto"> -->
+            </form>
+            <button class="botao-cria-produto" type="button" value="Criar Produto">Cria Produto</button>
+
         </main>
 
-        <!-- <script src="./main.js"></script> -->
+        <script src="../js/atualizar.js"></script>
     </body>
 </html>

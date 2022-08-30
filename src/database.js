@@ -1,6 +1,6 @@
 const tabelaRoupa = [
     { id: 1, nome: 'CalcaLinho', tipo: 'basico', valor: 299.90 , sustentavel: 'sim', img: 'https://www.zegna.com/bin/productImage.921F11.75TB12..F.R1.jpeg' },
-    { id: 2, nome: 'CalcaAlfaiataria', tipo: 'basico', valor: 219.90 , sustentavel: 'nao', img: 'https://cdn.vnda.com.br/saintstudio/2018/07/31/1875-calca-alfaiataria-feminina-preta-1665.jpg?v=1533070855' },
+    { id: 2, nome: 'CalcaAlfaiataria', tipo: 'verao', valor: 219.90 , sustentavel: 'nao', img: 'https://cdn.vnda.com.br/saintstudio/2018/07/31/1875-calca-alfaiataria-feminina-preta-1665.jpg?v=1533070855' },
     { id: 3, nome: 'CalcaJeans', tipo: 'basico', valor: 179.90 , sustentavel: 'sim', img: 'https://taco.vteximg.com.br/arquivos/ids/334964-1000-1500/18564_C051_1-CALCA-JEANS-RETA-VINTAGE-INFANTIL-MASCULINO.jpg?v=636957665520600000' },
     { id: 4, nome: 'CalcaJogger', tipo: 'verao', valor: 159.90 , sustentavel: 'sim', img: 'https://d2r9epyceweg5n.cloudfront.net/stores/001/224/277/products/3809p1-2d32d33cce97b238a316514403510883-640-0.png' },
     { id: 5, nome: 'CalcaCargo', tipo: 'verao', valor: 179.90 , sustentavel: 'sim', img: 'https://dramaoriginal.com.br/wp-content/uploads/2021/02/CALCA-CARGO-BEGE-NEW-01.png' },

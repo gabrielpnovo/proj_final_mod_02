@@ -81,6 +81,7 @@ nav a:hover {
 
 .produtos li {
     width: 30%;
+    height: 400px;
     margin: 0 8px 1.5% 1.5%;
     padding: 1em 0;
 	box-sizing: border-box;
@@ -108,7 +109,7 @@ nav a:hover {
 .imagens-produtos {
     margin: 5px 0;
     height: 50%;
-    width: 80%;
+    width: auto;
     background-size: cover;
 }
 
@@ -130,7 +131,7 @@ nav a:hover {
 
 .botoes-filtro {
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: space-around;
     margin-bottom: 16px;
