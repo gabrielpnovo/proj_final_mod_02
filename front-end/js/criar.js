@@ -1,17 +1,21 @@
 const ul = document.querySelector('.produtos')
 
 const botaoCriaProduto = document.querySelector('.botao-cria-produto')
-// const botaoTesteFormulario = document.querySelector('.teste-formulario')
+const nomeProduto = document.querySelector('#nome')
+const valorProduto = document.querySelector('#valor')
+const descricaoProduto = document.querySelector('#descricao')
+const imagemProduto = document.querySelector('#imagem')
 
-async function criaProduto(a, b, c, d, e) {
+async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
     const url = 'http://localhost:3300';
 
     const dado = {
-        "nome": a,
-        "tipo": b,
-        "valor": c,
-        "descricao": d,
-        "sustentavel": e
+        "nome": nome,
+        "tipo": tipo,
+        "valor": valor,
+        "descricao": descricao,
+        "sustentavel": sustentavel,
+        "img": img
     }
 
     const itens = await fetch(`${url}/criar`, {
@@ -19,13 +23,6 @@ async function criaProduto(a, b, c, d, e) {
         method: "POST",
         
         body: JSON.stringify(dado),
-        // body: JSON.stringify({
-        //     "nome": "novo produto",
-        //     "tipo": "tipo teste",
-        //     "valor": 12456,
-        //     "descricao": "descricao qualquer",
-        //     "sustentavel": "sim"
-        // }),
 
         headers: {
             "Content-type": "application/json",
@@ -51,5 +48,7 @@ async function criaProduto(a, b, c, d, e) {
 }
 
 botaoCriaProduto.addEventListener('click', function () {
-    criaProduto('nomeprod', 'tipoprod', 123, 'desc qualtuqe', 'nao')
+    // console.log('ok')
+    console.log(nomeProduto.value)
+    criaProduto(nomeProduto.value, 'verao', valorProduto.value, descricaoProduto.value, 'nao', imagemProduto.value)
 });
