@@ -158,6 +158,14 @@ fieldset {
     margin-bottom: 5px;
 }
 
+.legenda-combobox {
+    margin-bottom: 8px;
+}
+
+.combobox-selecao-id {
+    margin-bottom: 16px;
+}
+
 select {
     border: 1px solid black;
 }

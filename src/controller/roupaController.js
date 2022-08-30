@@ -125,13 +125,14 @@ class RoupaController {
         const itemDeletado = Roupa.findAndDelete(id)
         
         if (!itemDeletado) {
-            return res.status(404).send({
-                message: "Item não existe!"
+            return res.status(404).json({
+                mensagem: "Item não existe!"
             })
         }
 
-        res.status(200).send({
-            message: `Item ${id} deletado com sucesso!`
+        return res.status(200).json({
+            mensagem: `Item ${id} deletado com sucesso!`,
+            dado: tabelaRoupa
         })
     }
 }

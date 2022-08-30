@@ -25,13 +25,22 @@
             </div>
         </header>
 
+        <div class="popup hide-popup">
+            <p class="cabecalho-popup">Msg do Jogo</p>
+            <button class="fechar">x</button>
+            <div class="msg-popup">
+                
+            </div>
+            <button class="ok-popup">Ok</button>
+        </div>
+
         <main class="main-produto">
             <h2 class="titulo-pagina">Delete um Produto</h2>
             <hr>
 
             <form class="formulario-contato">
                 <fieldset>
-                    <legend>Qual item vc deseja excluir?</legend>
+                    <legend class="legenda-combobox">Qual item você deseja excluir?</legend>
                     <select class="combobox-selecao-id">
 
                     </select>
@@ -46,8 +55,9 @@
                 <label for="descricao">Descrição:</label>
                 <input type="text" id="descricao" class="input-padrao" required>
                 
-                <input class="botao-cria-produto" type="submit" value="Criar Produto">
+                <!-- <input class="botao-cria-produto" type="submit" value="Criar Produto"> -->
             </form>
+            <button class="botao-cria-produto" type="button" value="Deletar Produto">Deletar Produto</button>
         </main>
 
         <script src="../js/deletar.js"></script>
