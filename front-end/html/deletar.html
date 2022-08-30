@@ -13,8 +13,7 @@
     <body>
         <header>
             <div class="cabecalho">
-                <!-- <button class="cabecalho__menu" aria-label="Menu"><i></i></button> -->
-                <!-- <h1><img src="imagens/bike-logo.png" class="imagem-logo"></h1> -->
+                <h1><img src="../img/logo.png" class="imagem-logo"></h1>
                 <nav>
                     <ul>
                         <li><a href="./produtos.html">Produtos</a></li>
@@ -30,8 +29,27 @@
             <h2 class="titulo-pagina">Delete um Produto</h2>
             <hr>
 
+            <form class="formulario-contato">
+                <fieldset>
+                    <legend>Qual item vc deseja excluir?</legend>
+                    <select class="combobox-selecao-id">
+
+                    </select>
+                </fieldset>
+
+                <label for="nome">Nome do Produto:</label>
+                <input type="text" id="nome" class="input-padrao" required>
+
+                <label for="valor">Valor:</label>
+                <input type="text" id="valor" class="input-padrao" required>
+
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" class="input-padrao" required>
+                
+                <input class="botao-cria-produto" type="submit" value="Criar Produto">
+            </form>
         </main>
 
-        <script src="./main.js"></script>
+        <script src="../js/deletar.js"></script>
     </body>
 </html>

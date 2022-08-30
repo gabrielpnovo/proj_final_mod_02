@@ -54,11 +54,14 @@ class Roupa {
         const listaValores = Object.values(reqBody)
 
         for (let i =0;i<listaValores.length;i++) {
+            console.log(listaValores[i])
             if (listaValores[i] == '') {
+                console.log('retorno falso')
                 return false
             }
         }
-        return false
+        console.log('retorno true')
+        return true
     }
 
     constructor(nome, tipo, valor, descricao, sustentavel, img) {

@@ -24,7 +24,7 @@ async function pegaTodos() {
         </li>
         `
     })
-    return itensConvertidos
+    // return itensConvertidos
 }
 
 async function pegaVerao() {
@@ -46,7 +46,7 @@ async function pegaVerao() {
         </li>
         `
     })
-    return itensConvertidos
+    // return itensConvertidos
 }
 
 async function pegaInverno() {
@@ -68,7 +68,7 @@ async function pegaInverno() {
         </li>
         `
     })
-    return itensConvertidos
+    // return itensConvertidos
 }
 
 async function pegaSustentavel() {
@@ -90,7 +90,7 @@ async function pegaSustentavel() {
         </li>
         `
     })
-    return itensConvertidos
+    // return itensConvertidos
 }
 
 botaoMostraTodos.addEventListener('click', function () {

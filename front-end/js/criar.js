@@ -15,6 +15,7 @@ const radioVerao = document.querySelector('#radio-tipo-verao')
 const radioSustentavelSim = document.querySelector('#radio-sustentavel-sim')
 const radioSustentavelNao = document.querySelector('#radio-sustentavel-nao')
 
+// async function criaProduto() {
 async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
     const url = 'http://localhost:3300';
 
@@ -40,18 +41,19 @@ async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
             "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
         }
     })
+
     const itensConvertidos = await itens.json()
-    console.log(itensConvertidos)
+    // console.log('itensConvertidos.mensagem')
     alertaPopup(itensConvertidos.mensagem)
 
-    nomeProduto.value = ''
-    valorProduto.value = ''
-    descricaoProduto.value = ''
-    radioInverno.checked = false
-    radioVerao.checked = false
-    radioSustentavelSim.checked = false
-    radioSustentavelNao.checked = false
-    imagemProduto.value = ''
+    // nomeProduto.value = ''
+    // valorProduto.value = ''
+    // descricaoProduto.value = ''
+    // radioInverno.checked = false
+    // radioVerao.checked = false
+    // radioSustentavelSim.checked = false
+    // radioSustentavelNao.checked = false
+    // imagemProduto.value = ''
 }
 
 function alertaPopup(msg) {
@@ -64,11 +66,12 @@ botaoCriaProduto.addEventListener('click', function () {
     let sustentavel = 'nao'
     if (radioInverno.checked)
         tipo = 'inverno'
-
+    
     if (radioSustentavelSim.checked)
         sustentavel = 'sim'
-    console.log('antes criar produto')
+    
     criaProduto(nomeProduto.value, tipo, valorProduto.value, descricaoProduto.value, sustentavel, imagemProduto.value)
+    
 });
 
 botaoOkPopup.addEventListener('click', function () {
