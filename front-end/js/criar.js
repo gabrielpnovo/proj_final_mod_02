@@ -1,26 +1,31 @@
 const ul = document.querySelector('.produtos')
 
 const botaoCriaProduto = document.querySelector('.botao-cria-produto')
-const botaoTesteFormulario = document.querySelector('.teste-formulario')
+// const botaoTesteFormulario = document.querySelector('.teste-formulario')
 
-async function criaProduto() {
+async function criaProduto(a, b, c, d, e) {
     const url = 'http://localhost:3300';
-    console.log('entrou')
+
+    const dado = {
+        "nome": a,
+        "tipo": b,
+        "valor": c,
+        "descricao": d,
+        "sustentavel": e
+    }
 
     const itens = await fetch(`${url}/criar`, {
 
         method: "POST",
-                
-        body: JSON.stringify({
-            "nome": "novo produto",
-            "tipo": "tipo teste",
-            "valor": 12456,
-            "descricao": "descricao qualquer",
-            "sustentavel": "sim"
-        }),
-
-
-        // mode: "cors",
+        
+        body: JSON.stringify(dado),
+        // body: JSON.stringify({
+        //     "nome": "novo produto",
+        //     "tipo": "tipo teste",
+        //     "valor": 12456,
+        //     "descricao": "descricao qualquer",
+        //     "sustentavel": "sim"
+        // }),
 
         headers: {
             "Content-type": "application/json",
@@ -29,11 +34,6 @@ async function criaProduto() {
             "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
         }
     })
-    // console.log('itensConvertidos antes')
-    // console.log(req.headers.getAll('Content-Type'));
-    const itensConvertidos = await itens.json()
-    return itensConvertidos
-    // console.log('itensConvertidos depois')
 
     // ul.innerHTML = ''
 
@@ -50,7 +50,6 @@ async function criaProduto() {
     // return itensConvertidos
 }
 
-botaoTesteFormulario.addEventListener('click', function () {
-    console.log('event listener')
-    criaProduto()
+botaoCriaProduto.addEventListener('click', function () {
+    criaProduto('nomeprod', 'tipoprod', 123, 'desc qualtuqe', 'nao')
 });

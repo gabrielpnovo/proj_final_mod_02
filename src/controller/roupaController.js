@@ -46,12 +46,7 @@ class RoupaController {
     }
 
     static criar = (req, res) => {
-        console.log('dentro criar')
-        // res.setHeader({'Access-Control-Allow-Origin': '*'})
-        // res.setHeader('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS')
-        // res.setHeader('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token')
         const listaPropriedades = Object.keys(req.body)
-        console.log(req.body)
 
         if (!Roupa.verificaBody(req.body)) {
             console.log('campos incorretos')
@@ -76,8 +71,6 @@ class RoupaController {
             const produto = new Roupa( nome, tipo, valor, descricao, sustentavel)
             produto.save()
             
-            console.log(tabelaRoupa)
-
             res.status(200).json({
                 mensagem: 'Produto criado com sucesso!',
                 dados: tabelaRoupa

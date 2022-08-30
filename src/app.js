@@ -7,8 +7,8 @@ const urlencodedParser = parser.urlencoded({extended : false});
 
 const app = express();
 
-app.use(urlencodedParser)
 app.use(cors())
+app.use(urlencodedParser)
 app.use(express.json())
 
 routes(app);

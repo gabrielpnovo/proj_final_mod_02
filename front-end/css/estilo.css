@@ -98,6 +98,13 @@ nav a:hover {
     font-weight: bold;
 }
 
+.imagens-produtos {
+    margin: 5px 0;
+    height: 50%;
+    width: 80%;
+    background-size: cover;
+}
+
 .botao {
     cursor: pointer;
 }
@@ -181,6 +188,7 @@ nav a:hover {
 
 .botao-cria-produto {
     background-color: #0070C0;
+    cursor: pointer;
     color: white;
     font-weight: bold;
     border: 0px solid #000;

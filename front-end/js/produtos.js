@@ -18,6 +18,7 @@ async function pegaTodos() {
         <li>
             <h3 class="produto-nome">${e.nome}</h3>
             <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
+            <img src="${e.img}" class="imagens-produtos">
             <p class="produto-preco">R$${e.valor}</p>
             <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
         </li>
@@ -39,6 +40,7 @@ async function pegaVerao() {
         <li>
             <h3 class="produto-nome">${e.nome}</h3>
             <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
+            <img src="${e.img}" class="imagens-produtos">
             <p class="produto-preco">R$${e.valor}</p>
             <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
         </li>
@@ -60,6 +62,7 @@ async function pegaInverno() {
         <li>
             <h3 class="produto-nome">${e.nome}</h3>
             <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
+            <img src="${e.img}" class="imagens-produtos">
             <p class="produto-preco">R$${e.valor}</p>
             <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
         </li>
@@ -81,6 +84,7 @@ async function pegaSustentavel() {
         <li>
             <h3 class="produto-nome">${e.nome}</h3>
             <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
+            <img src="${e.img}" class="imagens-produtos">
             <p class="produto-preco">R$${e.valor}</p>
             <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
         </li>
