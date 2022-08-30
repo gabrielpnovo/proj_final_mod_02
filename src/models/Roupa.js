@@ -38,7 +38,8 @@ class Roupa {
             listaPropriedades[i] == 'tipo' || 
             listaPropriedades[i] == 'valor' ||
             listaPropriedades[i] == 'descricao'||
-            listaPropriedades[i] == 'sustentavel'
+            listaPropriedades[i] == 'sustentavel' ||
+            listaPropriedades[i] == 'img'
             ) 
             {
                 
@@ -49,13 +50,25 @@ class Roupa {
         return true
     }
 
-    constructor(nome, tipo, valor, descricao, sustentavel) {
+    static verificaValoresBody(reqBody) {
+        const listaValores = Object.values(reqBody)
+
+        for (let i =0;i<listaValores.length;i++) {
+            if (listaValores[i] == '') {
+                return false
+            }
+        }
+        return false
+    }
+
+    constructor(nome, tipo, valor, descricao, sustentavel, img) {
         this.id = Roupa.proximoId++,
         this.nome = nome,
         this.tipo = tipo,
         this.valor = valor,
         this.descricao = descricao,
-        this.sustentavel = sustentavel
+        this.sustentavel = sustentavel,
+        this.img = img
     }
 
     save() {

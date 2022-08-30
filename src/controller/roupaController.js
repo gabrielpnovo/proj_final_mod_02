@@ -49,9 +49,15 @@ class RoupaController {
         const listaPropriedades = Object.keys(req.body)
 
         if (!Roupa.verificaBody(req.body)) {
-            console.log('campos incorretos')
-            return res.status(401).json({
-                erro: 'Campos incorretos! Verifique documentação!'
+            return res.status(400).json({
+                mensagem: 'Campos incorretos! Verifique documentação!'
+            })
+        }
+
+        if (!Roupa.verificaValoresBody(req.body)) {
+            console.log('valores vazios')
+            return res.status(400).json({
+                mensagem: 'Valor vazio! Verifique documentação!'
             })
         }
 
@@ -60,25 +66,26 @@ class RoupaController {
             listaPropriedades.includes('tipo') &&
             listaPropriedades.includes('valor') &&
             listaPropriedades.includes('descricao') &&
-            listaPropriedades.includes('sustentavel')
+            listaPropriedades.includes('sustentavel') &&
+            listaPropriedades.includes('img')
         ) {
             const nome = req.body.nome
             const tipo = req.body.tipo
             const valor = req.body.valor
             const descricao = req.body.descricao
             const sustentavel = req.body.sustentavel
+            const img = req.body.img
 
-            const produto = new Roupa( nome, tipo, valor, descricao, sustentavel)
+            const produto = new Roupa( nome, tipo, valor, descricao, sustentavel, img)
             produto.save()
             
-            res.status(200).json({
+            return res.status(200).json({
                 mensagem: 'Produto criado com sucesso!',
                 dados: tabelaRoupa
             })
         } else {
             res.status(400).json({
-                erro: 'Os campos "nome", "tipo", "valor" , "descricao" e "sustentavel" são obrigatórios"',
-                informados: listaPropriedades
+                mensagem: 'Os campos "nome", "tipo", "valor" , "descricao", "sustentavel" e "img" são obrigatórios"'
             })
         }
     }

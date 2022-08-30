@@ -26,6 +26,15 @@
             </div>
         </header>
 
+        <div class="popup hide-popup">
+            <p class="cabecalho-popup">Msg do Jogo</p>
+            <button class="fechar">x</button>
+            <div class="msg-popup">
+                
+            </div>
+            <button class="ok-popup">Ok</button>
+        </div>
+
         <main class="main-produto">
             <h2 class="titulo-pagina">Crie um Novo Produto</h2>
             <hr>
@@ -46,7 +55,7 @@
                 <fieldset class="formulario-radio tipo-produto">
                     <p>Qual o tipo?</p> 
 
-                    <label for="radio-tipo-inverno"><input type="radio" name="tipo-produto" value="inverno" id="radio-tipo-inverno">Inverno</label>
+                    <label for="radio-tipo-inverno"><input type="radio" name="tipo-produto" value="inverno" id="radio-tipo-inverno" required>Inverno</label>
 
                     <label for="radio-tipo-verao"><input type="radio" name="tipo-produto" value="verao" id="radio-tipo-verao">Verão</label>
                 </fieldset>
@@ -54,15 +63,15 @@
                 <fieldset class="formulario-radio sustentavel-produto">
                     <p>É Sustentável?</p> 
 
-                    <label for="radio-sustentavel-sim"><input type="radio" name="sustentavel-produto" value="sim" id="radio-sustentavel-sim">Sim</label>
+                    <label for="radio-sustentavel-sim"><input type="radio" name="sustentavel-produto" value="sim" id="radio-sustentavel-sim" required>Sim</label>
 
                     <label for="radio-sustentavel-nao"><input type="radio" name="sustentavel-produto" value="nao" id="radio-sustentavel-nao">Não</label>
                 </fieldset>
                 
-                <!-- <input class="botao-cria-produto" type="submit" value="Criar Produto"> -->
+                <input class="botao-cria-produto" type="submit" value="Criar Produto">
             </form>
 
-            <button class="botao-cria-produto" type="button">Criar Produto</button>
+            <!-- <button class="botao-cria-produto" type="button">Criar Produto</button> -->
 
         </main>
 

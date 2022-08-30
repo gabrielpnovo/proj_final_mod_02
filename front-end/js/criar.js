@@ -1,10 +1,19 @@
 const ul = document.querySelector('.produtos')
 
+const popup = document.querySelector('.popup');
+const msgPopup = document.querySelector('.msg-popup');
+const botaoFechar = document.querySelector('.fechar');
+const botaoOkPopup = document.querySelector('.ok-popup');
+
 const botaoCriaProduto = document.querySelector('.botao-cria-produto')
 const nomeProduto = document.querySelector('#nome')
 const valorProduto = document.querySelector('#valor')
 const descricaoProduto = document.querySelector('#descricao')
 const imagemProduto = document.querySelector('#imagem')
+const radioInverno = document.querySelector('#radio-tipo-inverno')
+const radioVerao = document.querySelector('#radio-tipo-verao')
+const radioSustentavelSim = document.querySelector('#radio-sustentavel-sim')
+const radioSustentavelNao = document.querySelector('#radio-sustentavel-nao')
 
 async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
     const url = 'http://localhost:3300';
@@ -17,7 +26,7 @@ async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
         "sustentavel": sustentavel,
         "img": img
     }
-
+    console.log('antes fetch')
     const itens = await fetch(`${url}/criar`, {
 
         method: "POST",
@@ -31,24 +40,43 @@ async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
             "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
         }
     })
+    const itensConvertidos = await itens.json()
+    console.log(itensConvertidos)
+    alertaPopup(itensConvertidos.mensagem)
 
-    // ul.innerHTML = ''
-
-    // itensConvertidos.tabelaFiltrada.forEach( e => {
-    //     ul.innerHTML = ul.innerHTML + `
-    //     <li>
-    //         <h3 class="produto-nome">${e.nome}</h3>
-    //         <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
-    //         <p class="produto-preco">R$${e.valor}</p>
-    //         <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
-    //     </li>
-    //     `
-    // })
-    // return itensConvertidos
+    nomeProduto.value = ''
+    valorProduto.value = ''
+    descricaoProduto.value = ''
+    radioInverno.checked = false
+    radioVerao.checked = false
+    radioSustentavelSim.checked = false
+    radioSustentavelNao.checked = false
+    imagemProduto.value = ''
 }
 
+function alertaPopup(msg) {
+    popup.classList.remove('hide-popup')
+    msgPopup.innerHTML = `<p class="texto-popup"> ${msg}</p>`;
+};
+
 botaoCriaProduto.addEventListener('click', function () {
-    // console.log('ok')
-    console.log(nomeProduto.value)
-    criaProduto(nomeProduto.value, 'verao', valorProduto.value, descricaoProduto.value, 'nao', imagemProduto.value)
+    let tipo = 'verao'
+    let sustentavel = 'nao'
+    if (radioInverno.checked)
+        tipo = 'inverno'
+
+    if (radioSustentavelSim.checked)
+        sustentavel = 'sim'
+    console.log('antes criar produto')
+    criaProduto(nomeProduto.value, tipo, valorProduto.value, descricaoProduto.value, sustentavel, imagemProduto.value)
+});
+
+botaoOkPopup.addEventListener('click', function () {
+    popup.classList.add('hide-popup')
+});
+
+
+// evento disparado ao clicar no botão "x" do popup. Como resultado, o pop desaparece da tela
+botaoFechar.addEventListener('click', function () {
+    popup.classList.add('hide-popup')
 });

@@ -196,3 +196,76 @@ nav a:hover {
     padding: 15px;
     text-align: center;
 }
+
+/* ========== CABEÇALHO ========== */
+
+.popup {
+    position: absolute;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 250px;
+    width: 500px;
+    background-color: #357ec7;
+    z-index: 900;
+    border: 1px solid black;
+    border-radius: 10px 10px 0 0;
+}
+
+.cabecalho-popup {
+    margin-top: 3px;
+    color: lightgray;
+    font-weight: bold;
+}
+
+.fechar {
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    color: white;
+    background-color: #ff605c;
+    height: 22px;
+    width: 22px;
+    right: 0;
+    top: 0;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    padding: 1px 7px 2px 6px;
+}
+
+.msg-popup {
+    position: relative;
+    box-sizing: border-box;
+    color: black;
+    padding: 10px;
+    background-color: lightgray;
+    margin: 0 auto;
+    margin-top: 1em;
+    width: 95%;
+    height: 80%;
+    margin-bottom: 10px;
+  }
+
+.texto-popup {
+    margin: 15px;
+}
+
+.ok-popup {
+    position: absolute;
+    bottom: 25px;
+    height: 30px;
+    width: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.hide-popup {
+    display: none;
+}
