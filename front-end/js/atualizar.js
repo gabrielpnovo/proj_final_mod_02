@@ -9,12 +9,10 @@ const nomeProduto = document.querySelector('#nome')
 const valorProduto = document.querySelector('#valor')
 const descricaoProduto = document.querySelector('#descricao')
 const imagemProduto = document.querySelector('#imagem')
-const radioInverno = document.querySelector('#radio-tipo-inverno')
-const radioVerao = document.querySelector('#radio-tipo-verao')
-const radioSustentavelSim = document.querySelector('#radio-sustentavel-sim')
-const radioSustentavelNao = document.querySelector('#radio-sustentavel-nao')
+const tiposArray = document.querySelectorAll('.radio-tipo')
+const sustentaveisArray = document.querySelectorAll('.radio-sustentavel')
 
-const botaoDeletaProduto = document.querySelector('.botao-cria-produto')
+const botaoAtualizaProduto = document.querySelector('.botao-acao-produto')
 
 pegaTodos()
 
@@ -44,48 +42,81 @@ async function selecionaItem (id) {
     descricaoProduto.value = itensConvertidos.produto.descricao
     imagemProduto.value = itensConvertidos.produto.img
 
-    if (itensConvertidos.produto.tipo == 'verao') {
-        radioVerao.checked = true
-    } else {
-        radioInverno.checked = true
+    for (e of tiposArray) {
+        if (e.value == itensConvertidos.produto.tipo) {
+            e.checked=true
+        }
     }
 
-    if (itensConvertidos.produto.sustentavel == 'sim') {
-        radioSustentavelSim.checked = true
-    } else {
-        radioSustentavelNao.checked = true
+    for (e of sustentaveisArray) {
+        if (e.value == itensConvertidos.produto.sustentavel) {
+            e.checked=true
+        }
     }
 }
 
-async function deletarItem(id) {
+async function atualizarItem(id, nome, tipo, valor, descricao, sustentavel, img) {
     const url = 'http://localhost:3300';
 
-    const itens = await fetch(`${url}/deletar/${id}`,{
-        method: 'PUT'
+    const dado = {
+        "nome": nome,
+        "tipo": tipo,
+        "valor": valor,
+        "descricao": descricao,
+        "sustentavel": sustentavel,
+        "img": img
+    }
+
+    const itens = await fetch(`${url}/atualizar/${id}`,{
+        method: 'PUT',
+
+        body: JSON.stringify(dado),
+
+        headers: {
+            "Content-type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
+        }
     })
     const itensConvertidos = await itens.json()
+    console.log((itensConvertidos.dado))
 
     alertaPopup(itensConvertidos.mensagem)
 
-    pegaTodos()
+    // pegaTodos()
 
-    nomeProduto.value = ''
-    valorProduto.value = ''
-    descricaoProduto.value = ''
+    // nomeProduto.value = ''
+    // valorProduto.value = ''
+    // descricaoProduto.value = ''
 }
-
-function alertaPopup(msg) {
-    popup.classList.remove('hide-popup')
-    msgPopup.innerHTML = `<p class="texto-popup"> ${msg}</p>`;
-};
 
 comboboxSelecaoId.addEventListener('change', () => {
     selecionaItem(comboboxSelecaoId.value)
 })
 
-botaoDeletaProduto.addEventListener('click', () => {
-    deletarItem(comboboxSelecaoId.value)
+botaoAtualizaProduto.addEventListener('click', () => {
+    let tipo = ''
+    for (e of tiposArray) {
+        if (e.checked == true) {
+            tipo = e.value
+        }
+    }
+
+    let sustentavel = ''
+    for (e of sustentaveisArray) {
+        if (e.checked == true) {
+            sustentavel = e.value
+        }
+    }
+    
+    atualizarItem(comboboxSelecaoId.value, nomeProduto.value, tipo, valorProduto.value, descricaoProduto.value, sustentavel, imagemProduto.value)
 })
+
+function alertaPopup(msg) {
+    popup.classList.remove('hide-popup')
+    msgPopup.innerHTML = `<p class="texto-popup"> ${msg}</p>`;
+};
 
 botaoOkPopup.addEventListener('click', function () {
     popup.classList.add('hide-popup')

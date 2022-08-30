@@ -18,7 +18,7 @@ async function pegaTodos() {
         ul.innerHTML = ul.innerHTML + `
         <li>
             <h3 class="produto-nome">${e.nome}</h3>
-            <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
+            <p class="produto-descricao">${e.descricao}</p>
             <img src="${e.img}" class="imagens-produtos">
             <p class="produto-preco">R$${e.valor}</p>
             <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
@@ -40,58 +40,13 @@ async function pegaItens(tipoItem) {
         ul.innerHTML = ul.innerHTML + `
         <li>
             <h3 class="produto-nome">${e.nome}</h3>
-            <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
+            <p class="produto-descricao">${e.descricao}</p>
             <img src="${e.img}" class="imagens-produtos">
             <p class="produto-preco">R$${e.valor}</p>
             <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
         </li>
         `
     })
-    // return itensConvertidos
-}
-
-async function pegaInverno(valor) {
-    const url = 'http://localhost:3300';
-
-    const itens = await fetch(`${url}/buscar?tipo=${valor}`)
-    const itensConvertidos = await itens.json()
-
-    ul.innerHTML = ''
-
-    itensConvertidos.tabelaFiltrada.forEach( e => {
-        ul.innerHTML = ul.innerHTML + `
-        <li>
-            <h3 class="produto-nome">${e.nome}</h3>
-            <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
-            <img src="${e.img}" class="imagens-produtos">
-            <p class="produto-preco">R$${e.valor}</p>
-            <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
-        </li>
-        `
-    })
-    // return itensConvertidos
-}
-
-async function pegaSustentavel() {
-    const url = 'http://localhost:3300';
-
-    const itens = await fetch(`${url}/buscar?sustentavel=sim`)
-    const itensConvertidos = await itens.json()
-
-    ul.innerHTML = ''
-
-    itensConvertidos.tabelaFiltrada.forEach( e => {
-        ul.innerHTML = ul.innerHTML + `
-        <li>
-            <h3 class="produto-nome">${e.nome}</h3>
-            <p class="produto-descricao">Todos os modelos para quem gosta de velocidade.</p>
-            <img src="${e.img}" class="imagens-produtos">
-            <p class="produto-preco">R$${e.valor}</p>
-            <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
-        </li>
-        `
-    })
-    // return itensConvertidos
 }
 
 botaoMostraTodos.addEventListener('click', function () {

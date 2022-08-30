@@ -9,7 +9,7 @@ const nomeProduto = document.querySelector('#nome')
 const valorProduto = document.querySelector('#valor')
 const descricaoProduto = document.querySelector('#descricao')
 
-const botaoDeletaProduto = document.querySelector('.botao-cria-produto')
+const botaoDeletaProduto = document.querySelector('.botao-acao-produto')
 
 pegaTodos()
 

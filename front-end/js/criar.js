@@ -5,18 +5,18 @@ const msgPopup = document.querySelector('.msg-popup');
 const botaoFechar = document.querySelector('.fechar');
 const botaoOkPopup = document.querySelector('.ok-popup');
 
-const botaoCriaProduto = document.querySelector('.botao-cria-produto')
+const botaoCriaProduto = document.querySelector('.botao-acao-produto')
 const nomeProduto = document.querySelector('#nome')
 const valorProduto = document.querySelector('#valor')
 const descricaoProduto = document.querySelector('#descricao')
 const imagemProduto = document.querySelector('#imagem')
-const radioInverno = document.querySelector('#radio-tipo-inverno')
+// const radioInverno = document.querySelector('#radio-tipo-inverno')
 // const radioVerao = document.querySelector('#radio-tipo-verao')
 // const radioBasico = document.querySelector('#radio-tipo-basico')
 const tiposArray = document.querySelectorAll('.radio-tipo')
 const sustentaveisArray = document.querySelectorAll('.radio-sustentavel')
-const radioSustentavelSim = document.querySelector('#radio-sustentavel-sim')
-const radioSustentavelNao = document.querySelector('#radio-sustentavel-nao')
+// const radioSustentavelSim = document.querySelector('#radio-sustentavel-sim')
+// const radioSustentavelNao = document.querySelector('#radio-sustentavel-nao')
 
 // async function criaProduto() {
 async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
@@ -30,7 +30,7 @@ async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
         "sustentavel": sustentavel,
         "img": img
     }
-    console.log('antes fetch')
+
     const itens = await fetch(`${url}/criar`, {
 
         method: "POST",
@@ -49,14 +49,14 @@ async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
     // console.log('itensConvertidos.mensagem')
     alertaPopup(itensConvertidos.mensagem)
 
-    // nomeProduto.value = ''
-    // valorProduto.value = ''
-    // descricaoProduto.value = ''
+    nomeProduto.value = ''
+    valorProduto.value = ''
+    descricaoProduto.value = ''
+    imagemProduto.value = ''
     // radioInverno.checked = false
     // radioVerao.checked = false
     // radioSustentavelSim.checked = false
     // radioSustentavelNao.checked = false
-    // imagemProduto.value = ''
 }
 
 function alertaPopup(msg) {
@@ -78,8 +78,6 @@ botaoCriaProduto.addEventListener('click', function () {
             sustentavel = e.value
         }
     }
-    console.log('tipo:' + tipo)
-    console.log('sustentavel:' + sustentavel)
     
     criaProduto(nomeProduto.value, tipo, valorProduto.value, descricaoProduto.value, sustentavel, imagemProduto.value)
     

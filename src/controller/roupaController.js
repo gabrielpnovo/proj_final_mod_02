@@ -100,7 +100,7 @@ class RoupaController {
         if (item == null) {
             // com o return aqui, posso tirar o código do else, pois ele não seguirá executando o código
             return res.status(400).json({
-                message: `Item de id ${id} não existe!`
+                mensagem: `Item de id ${id} não existe!`
             })
         }
 
@@ -108,14 +108,15 @@ class RoupaController {
         
         if (!campos) {
             return res.status(400).json({
-                message: 'Você forneceu campos inválidos. Verifique a documentação!'
+                mensagem: 'Você forneceu campos inválidos. Verifique a documentação!'
             })            
         }
         
         Roupa.findAndUpdate(req.body, id)
         
         res.status(200).json({
-            message: 'Campos atualizados com sucesso!',
+            mensagem: 'Campos atualizados com sucesso!',
+            dado: tabelaRoupa
         })
     }
 
