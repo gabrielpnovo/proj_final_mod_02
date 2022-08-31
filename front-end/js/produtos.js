@@ -51,23 +51,6 @@ async function pegaItens(tipoItem) {
             ul.appendChild(li)
         },100*(i+1));
     })
-
-    // ul.innerHTML = ''
-
-    // itensConvertidos.tabelaFiltrada.forEach( e => {
-
-    //     setTimeout(function(){ 
-    //         ul.innerHTML = ul.innerHTML + `
-    //         <li class="new-box">
-    //             <h3 class="produto-nome">${e.nome}</h3>
-    //             <p class="produto-descricao">${e.descricao}</p>
-    //             <img src="${e.img}" class="imagens-produtos">
-    //             <p class="produto-preco">R$${e.valor}</p>
-    //             <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
-    //         </li>
-    //         `
-    //     },500);
-    // })
 }
 
 botaoMostraTodos.addEventListener('click', function () {

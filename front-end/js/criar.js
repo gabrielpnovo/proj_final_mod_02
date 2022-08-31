@@ -10,15 +10,9 @@ const nomeProduto = document.querySelector('#nome')
 const valorProduto = document.querySelector('#valor')
 const descricaoProduto = document.querySelector('#descricao')
 const imagemProduto = document.querySelector('#imagem')
-// const radioInverno = document.querySelector('#radio-tipo-inverno')
-// const radioVerao = document.querySelector('#radio-tipo-verao')
-// const radioBasico = document.querySelector('#radio-tipo-basico')
 const tiposArray = document.querySelectorAll('.radio-tipo')
 const sustentaveisArray = document.querySelectorAll('.radio-sustentavel')
-// const radioSustentavelSim = document.querySelector('#radio-sustentavel-sim')
-// const radioSustentavelNao = document.querySelector('#radio-sustentavel-nao')
 
-// async function criaProduto() {
 async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
     const url = 'http://localhost:3300';
 
@@ -86,8 +80,6 @@ botaoOkPopup.addEventListener('click', function () {
     popup.classList.add('hide-popup')
 });
 
-
-// evento disparado ao clicar no botão "x" do popup. Como resultado, o pop desaparece da tela
 botaoFechar.addEventListener('click', function () {
     popup.classList.add('hide-popup')
 });
