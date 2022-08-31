@@ -46,7 +46,6 @@ async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
     })
 
     const itensConvertidos = await itens.json()
-    // console.log('itensConvertidos.mensagem')
     alertaPopup(itensConvertidos.mensagem)
 
     nomeProduto.value = ''

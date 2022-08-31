@@ -16,7 +16,7 @@ pegaTodos()
 async function pegaTodos() {
     const url = 'http://localhost:3300';
 
-    comboboxSelecaoId.innerHTML = `<option selected disabled hiddn>Escolha o ID do Item</option>`
+    comboboxSelecaoId.innerHTML = `<option selected disabled hidden>Escolha o ID do Item</option>`
 
     const itens = await fetch(`${url}/listar`)
     const itensConvertidos = await itens.json()

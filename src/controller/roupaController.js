@@ -50,14 +50,12 @@ class RoupaController {
         const listaPropriedades = Object.keys(req.body)
 
         if (!Roupa.verificaBody(req.body)) {
-            console.log('campos incorretos')
             return res.status(400).json({
                 mensagem: 'Campos incorretos! Verifique documentação!'
             })
         }
 
         if (!Roupa.verificaValoresBody(req.body)) {
-            console.log('valores vazios')
             return res.status(400).json({
                 mensagem: 'Preencha todos os campos corretamente!'
             })
@@ -80,13 +78,11 @@ class RoupaController {
 
             const produto = new Roupa( nome, tipo, valor, descricao, sustentavel, img)
             produto.save()
-            console.log('criou')
             
             return res.status(200).json({
                 mensagem: 'Produto criado com sucesso!'
             })
         } else {
-            console.log('erro')
             return res.status(400).json({
                 mensagem: 'Os campos "nome", "tipo", "valor" , "descricao", "sustentavel" e "img" são obrigatórios"'
             })

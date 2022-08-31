@@ -13,19 +13,21 @@ async function pegaTodos() {
     const itensConvertidos = await itens.json()
 
     ul.innerHTML = ''
-
-    itensConvertidos.tabelaRoupa.forEach( e => {
-        ul.innerHTML = ul.innerHTML + `
-        <li>
-            <h3 class="produto-nome">${e.nome}</h3>
-            <p class="produto-descricao">${e.descricao}</p>
-            <img src="${e.img}" class="imagens-produtos">
-            <p class="produto-preco">R$${e.valor}</p>
-            <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
-        </li>
-        `
+    itensConvertidos.tabelaRoupa.forEach( (e, i) => {
+        setTimeout(function(){ 
+            let li = document.createElement('li')
+            li.innerHTML =`
+                <h3 class="produto-nome">${e.nome}</h3>
+                <p class="produto-descricao">${e.descricao}</p>
+                <img src="${e.img}" class="imagens-produtos">
+                <p class="produto-preco">R$${e.valor}</p>
+                <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
+            `
+            li.classList.add('new-box')
+            ul.appendChild(li)
+        },100*(i+1));
+        // },10);
     })
-    // return itensConvertidos
 }
 
 async function pegaItens(tipoItem) {
@@ -35,18 +37,37 @@ async function pegaItens(tipoItem) {
     const itensConvertidos = await itens.json()
 
     ul.innerHTML = ''
-
-    itensConvertidos.tabelaFiltrada.forEach( e => {
-        ul.innerHTML = ul.innerHTML + `
-        <li>
-            <h3 class="produto-nome">${e.nome}</h3>
-            <p class="produto-descricao">${e.descricao}</p>
-            <img src="${e.img}" class="imagens-produtos">
-            <p class="produto-preco">R$${e.valor}</p>
-            <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
-        </li>
-        `
+    itensConvertidos.tabelaFiltrada.forEach( (e, i) => {
+        setTimeout(function(){ 
+            let li = document.createElement('li')
+            li.innerHTML =`
+                <h3 class="produto-nome">${e.nome}</h3>
+                <p class="produto-descricao">${e.descricao}</p>
+                <img src="${e.img}" class="imagens-produtos">
+                <p class="produto-preco">R$${e.valor}</p>
+                <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
+            `
+            li.classList.add('new-box')
+            ul.appendChild(li)
+        },100*(i+1));
     })
+
+    // ul.innerHTML = ''
+
+    // itensConvertidos.tabelaFiltrada.forEach( e => {
+
+    //     setTimeout(function(){ 
+    //         ul.innerHTML = ul.innerHTML + `
+    //         <li class="new-box">
+    //             <h3 class="produto-nome">${e.nome}</h3>
+    //             <p class="produto-descricao">${e.descricao}</p>
+    //             <img src="${e.img}" class="imagens-produtos">
+    //             <p class="produto-preco">R$${e.valor}</p>
+    //             <button class="botao botao-produto" type="button">Adicionar ao Carrinho</button>
+    //         </li>
+    //         `
+    //     },500);
+    // })
 }
 
 botaoMostraTodos.addEventListener('click', function () {
