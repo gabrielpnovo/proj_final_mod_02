@@ -94,7 +94,6 @@ class RoupaController {
 
         const item = Roupa.findById(id)
         if (item == null) {
-            // com o return aqui, posso tirar o código do else, pois ele não seguirá executando o código
             return res.status(400).json({
                 mensagem: `Item de id ${id} não existe!`
             })

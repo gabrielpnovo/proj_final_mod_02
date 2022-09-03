@@ -84,6 +84,11 @@ async function atualizarItem(id, nome, tipo, valor, descricao, sustentavel, img)
     alertaPopup(itensConvertidos.mensagem)
 }
 
+function alertaPopup(msg) {
+    popup.classList.remove('hide-popup')
+    msgPopup.innerHTML = `<p class="texto-popup"> ${msg}</p>`;
+};
+
 comboboxSelecaoId.addEventListener('change', () => {
     selecionaItem(comboboxSelecaoId.value)
 })
@@ -106,17 +111,10 @@ botaoAtualizaProduto.addEventListener('click', () => {
     atualizarItem(comboboxSelecaoId.value, nomeProduto.value, tipo, valorProduto.value, descricaoProduto.value, sustentavel, imagemProduto.value)
 })
 
-function alertaPopup(msg) {
-    popup.classList.remove('hide-popup')
-    msgPopup.innerHTML = `<p class="texto-popup"> ${msg}</p>`;
-};
-
 botaoOkPopup.addEventListener('click', function () {
     popup.classList.add('hide-popup')
 });
 
-
-// evento disparado ao clicar no botão "x" do popup. Como resultado, o pop desaparece da tela
 botaoFechar.addEventListener('click', function () {
     popup.classList.add('hide-popup')
 });

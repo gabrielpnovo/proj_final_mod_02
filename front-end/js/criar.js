@@ -46,10 +46,6 @@ async function criaProduto(nome, tipo, valor, descricao, sustentavel, img) {
     valorProduto.value = ''
     descricaoProduto.value = ''
     imagemProduto.value = ''
-    // radioInverno.checked = false
-    // radioVerao.checked = false
-    // radioSustentavelSim.checked = false
-    // radioSustentavelNao.checked = false
 }
 
 function alertaPopup(msg) {

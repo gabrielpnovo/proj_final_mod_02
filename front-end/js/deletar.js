@@ -73,8 +73,6 @@ botaoOkPopup.addEventListener('click', function () {
     popup.classList.add('hide-popup')
 });
 
-
-// evento disparado ao clicar no botão "x" do popup. Como resultado, o pop desaparece da tela
 botaoFechar.addEventListener('click', function () {
     popup.classList.add('hide-popup')
 });
